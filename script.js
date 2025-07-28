@@ -342,10 +342,16 @@ openPackButton.addEventListener('click', () => {
                 cardElement.appendChild(rarityBadge);
             }
 
+            // ▼▼▼ 変更開始 (通常表示のカード画像) ▼▼▼
             const imagePath = `./cards_images/${card['number']}.png`;
-            const cardImage = document.createElement('img');
-            cardImage.src = imagePath;
-            cardImage.alt = card['name'];
+            const cardImageWrapper = document.createElement('div'); // div要素で画像を包む
+            cardImageWrapper.classList.add('card-image-wrapper');
+            cardImageWrapper.style.backgroundImage = `url('${imagePath}')`;
+            cardImageWrapper.onerror = function() { // 画像読み込みエラー時の処理
+                this.style.backgroundImage = `url('./cards_images/no_image.png')`; // デフォルト画像
+            };
+            cardElement.appendChild(cardImageWrapper);
+            // ▲▲▲ 変更終了 ▲▲▲
 
             const cardName = document.createElement('p');
             cardName.classList.add('card-name');
@@ -367,7 +373,7 @@ openPackButton.addEventListener('click', () => {
             cardEffect.classList.add('card-effect');
             cardEffect.innerHTML = `効果: ${card['effect'].replace(/\\n/g, '<br>')}`;
 
-            cardElement.appendChild(cardImage);
+            // cardImageを直接appendChildする部分は削除
             cardElement.appendChild(cardName);
             cardElement.appendChild(cardProduct);
             cardElement.appendChild(cardType);
@@ -431,7 +437,7 @@ tweetResultButton.addEventListener('click', () => {
     tweetText += `合計${totalPacks}パック開封して、${ownedUniqueCards}/${totalUniqueCards} (${overallRate}%)揃いました。\n`;
     tweetText += `使用金額合計は${totalAmount}円でした。\n`;
 
-    const simulatorUrl = 'https://your-simulator-url.com'; // ★ここにデプロイ先のURLを設定★
+    const simulatorUrl = 'https://your-github-username.github.io/lovelive-card-simulator/'; // ★ここにデプロイ先のURLを設定★
     tweetText += `${simulatorUrl}\n`;
     tweetText += `#ラブライブ #カード開封シミュレーター`; // ハッシュタグも追加
 
@@ -539,24 +545,7 @@ function loadAndDisplayHistory() {
             sortedCards.forEach(card => {
                 const cardDiv = document.createElement('div');
                 cardDiv.classList.add('history-card');
-                // ▼▼▼ 変更開始 ▼▼▼
-                cardDiv.textContent = `${card.name}, ${card.rarity}`; // 「カード名, レアリティ」のみ表示
-                // ▲▲▲ 変更終了 ▲▲▼
-                
-                // 以前のレアリティバッジや詳細情報は削除またはコメントアウト
-                /*
-                if (card.rarity) {
-                    cardDiv.classList.add(`rarity-${card.rarity}`);
-                    const rarityBadge = document.createElement('span');
-                    rarityBadge.classList.add('card-rarity');
-                    rarityBadge.textContent = card.rarity;
-                    cardDiv.appendChild(rarityBadge);
-                }
-                
-                const cardName = document.createElement('p');
-                cardName.textContent = card.name;
-                cardDiv.appendChild(cardName);
-                */
+                cardDiv.textContent = `${card.name}, ${card.rarity}`; 
                 historyCardsContainer.appendChild(cardDiv);
             });
             historyItemDiv.appendChild(historyCardsContainer);
@@ -656,7 +645,7 @@ function displayCardCollection() {
     });
 
     if (sortedCollectionCards.length === 0) { 
-        cardCollectionDisplayArea.innerHTML = '<p>表示するカードがありません。設定されたパックの商品情報が正しいか確認してください。</p>'; // メッセージを変更
+        cardCollectionDisplayArea.innerHTML = '<p>表示するカードがありません。設定されたパックの商品情報が正しいか確認してください。</p>'; 
         return;
     }
 
@@ -689,18 +678,16 @@ function displayCardCollection() {
         ownedCountBadge.textContent = `x${ownedCount}`;
         cardDiv.appendChild(ownedCountBadge);
 
-        // カード画像
+        // ▼▼▼ 変更開始 (カード図鑑のカード画像) ▼▼▼
         const imagePath = `./cards_images/${card.number}.png`;
-        const cardImage = document.createElement('img');
-        cardImage.src = imagePath;
-        cardImage.alt = card.name;
-        cardImage.onerror = function() {
-            // 画像が見つからない場合のフォールバック（例: デフォルト画像）
-            this.onerror = null; // エラーの無限ループを防ぐ
-            this.src = './cards_images/no_image.png'; // または適切なデフォルト画像
-            this.alt = '画像なし';
+        const cardImageWrapper = document.createElement('div'); // div要素で画像を包む
+        cardImageWrapper.classList.add('card-image-wrapper');
+        cardImageWrapper.style.backgroundImage = `url('${imagePath}')`;
+        cardImageWrapper.onerror = function() { // 画像読み込みエラー時の処理
+            this.style.backgroundImage = `url('./cards_images/no_image.png')`; // デフォルト画像
         };
-        cardDiv.appendChild(cardImage);
+        cardDiv.appendChild(cardImageWrapper);
+        // ▲▲▲ 変更終了 ▲▲▲
 
         // カード名
         const cardName = document.createElement('p');

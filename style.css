@@ -431,3 +431,19 @@ body {
 .collection-card.rarity-SEC { border-color: #dc3545; background-color: #ffebeb; }
 .collection-card.rarity-SECE { border-color: #e83e8c; background-color: #ffeaf3; }
 .collection-card.rarity-LLE { border-color: #6f42c1; background-color: #f3e9fb; }
+
+
+/* 新しいカード画像表示用のスタイル */
+.card-image-wrapper {
+    width: 150px; /* カード画像の幅を調整 */
+    height: 210px; /* カード画像の高さを調整 (縦横比に合わせて調整してください) */
+    background-size: contain; /* 画像を枠に収める */
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto 5px; /* 中央揃えと下マージン */
+    /* 必要に応じてボーダーやシャドウを追加 */
+}
+.collection-card .card-image-wrapper {
+     width: 100px; /* コレクションのカード画像を少し小さく */
+     height: 140px; /* コレクションのカード画像を少し小さく */
+}
