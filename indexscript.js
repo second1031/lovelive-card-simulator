@@ -49,10 +49,14 @@ function createPackThumbnail(productValue, displayName, imageFileName) {
     packDiv.dataset.product = productValue;
 
     const img = document.createElement('img');
-    img.src = `./pack_images/${imageFileName}`; // pack_imagesフォルダを仮定
+   // ★修正前: img.src = `./pack_images/${imageFileName}`;
+    // ★修正後:
+    img.src = `pack_images/${imageFileName}`; // プロジェクトのルートからの相対パス
     img.alt = displayName;
     img.onerror = function() {
-        this.src = './pack_images/pack_default.png'; // 画像が見つからない場合のフォールバック
+        // ★修正前: this.src = './pack_images/pack_default.png';
+        // ★修正後:
+        this.src = 'pack_images/pack_default.png'; // プロジェクトのルートからの相対パス
     };
     packDiv.appendChild(img);
 
