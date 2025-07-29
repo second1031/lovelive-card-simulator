@@ -1,36 +1,69 @@
-.controls {
-    margin-bottom: 30px;
+/* General Body and Container Styles */
+body {
+    font-family: sans-serif;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
+    margin-top: 20px; /* 上部の余白を少し減らす */
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+    margin-left: 10px; /* 左右に少し余白 */
+    margin-right: 10px; /* 左右に少し余白 */
+}
+
+h1 {
+    color: #007bff;
+    margin-bottom: 20px; /* 余白を少し減らす */
+    font-size: 2em; /* デフォルトのフォントサイズを調整 */
+}
+
+h2 {
+    font-size: 1.5em; /* デフォルトのフォントサイズを調整 */
+    color: #444;
+    margin-top: 30px; /* セクション間の余白 */
+}
+
+.container {
+    width: 98%; /* 画面幅に対して少し余白を持たせる */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px; /* パディングを少し減らす */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-bottom: 20px; /* 下部の余白を少し減らす */
+    box-sizing: border-box; /* パディングとボーダーをwidthに含める */
+}
+
+/* Controls Area */
+.controls {
+    margin-bottom: 20px; /* 余白を少し減らす */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* ギャップを少し減らす */
 }
 
 .controls label {
-    font-size: 1.1em;
+    font-size: 1em; /* フォントサイズを調整 */
     color: #555;
 }
 
-.controls select { /* 追加 */
-    padding: 10px;
-    font-size: 1.1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: white;
-    cursor: pointer;
-}
-
 .controls input[type="number"] {
-    padding: 10px;
-    font-size: 1.1em;
+    padding: 8px; /* パディングを調整 */
+    font-size: 1em; /* フォントサイズを調整 */
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 80px;
+    width: 70px; /* 幅を調整 */
     text-align: center;
 }
 
 button {
-    padding: 15px 30px;
-    font-size: 1.2em;
+    padding: 12px 25px; /* パディングを調整 */
+    font-size: 1.1em; /* フォントサイズを調整 */
     background-color: #007bff;
     color: white;
     border: none;
@@ -43,132 +76,234 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* 以下は変更なし */
+/* Pack Selection Area (for index.html) */
+#packSelectionArea {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* ギャップを少し減らす */
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.pack-thumbnail {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 10px; /* パディングを減らす */
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 150px; /* デフォルトのサムネイル幅を調整 */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pack-thumbnail:hover {
+    transform: translateY(-3px); /* 動きを少し抑える */
+    box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+}
+
+.pack-thumbnail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 8px; /* 余白を少し減らす */
+    pointer-events: none;
+}
+
+.pack-thumbnail p {
+    font-weight: bold;
+    color: #333;
+    font-size: 1em; /* フォントサイズを調整 */
+    margin: 0;
+}
+
+/* History Area (Modified for display total only) */
+.history-area {
+    margin-top: 20px; /* 余白を調整 */
+    width: 100%;
+    max-width: 1000px;
+    background-color: #ffffff;
+    padding: 15px; /* パディングを調整 */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+    /* history-area自体は表示されるのでdisplay:none;は削除 */
+}
+
+.history-area h2 {
+    /* style="display: none;" がHTMLに適用されるため、CSSでは直接非表示にしない */
+    /* display: none; */
+}
+
+#clearHistoryButton {
+    background-color: #dc3545;
+    padding: 8px 15px; /* パディングを調整 */
+    font-size: 0.9em; /* フォントサイズを調整 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px; /* 上部の余白を追加 */
+    margin-bottom: 10px; /* 下部の余白を調整 */
+}
+
+#clearHistoryButton:hover {
+    background-color: #c82333;
+}
+
+#totalPacksOpened, #totalAmountSpent {
+    font-size: 1em; /* フォントサイズを調整 */
+    margin: 5px 0; /* 上下の余白 */
+    font-weight: bold;
+}
+
+#historyDisplayArea {
+    /* style="display: none;" がHTMLに適用されるため、CSSでは直接非表示にしない */
+    /* display: none; */
+}
+
+
+/* Card Display Area (for open.html) */
 #cardDisplayArea {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
-    min-height: 200px;
-    width: 90%;
-    max-width: 1200px;
-    padding: 20px;
+    gap: 30px; /* ギャップを調整 */
+    min-height: 150px; /* 最小高さを調整 */
+    width: 100%;
+    padding: 15px 0;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    box-sizing: border-box;
 }
 
 .pack-container {
     border: 2px solid #a0a0a0;
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px; /* パディングを調整 */
     background-color: #ffffff;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 1000px;
+    width: calc(100% - 30px); /* 親の#cardDisplayAreaのpaddingを考慮 */
+    max-width: 900px; /* 最大幅を調整 */
     text-align: center;
+    box-sizing: border-box;
+}
+
+.pack-title {
+    text-align: center;
+    margin-bottom: 8px; /* 余白を調整 */
+    color: #333;
+    font-size: 1.3em; /* フォントサイズを調整 */
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px; /* パディングを調整 */
 }
 
 .pack-cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.pack-title {
-    font-size: 1.5em;
-    color: #444;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    gap: 8px; /* ギャップを調整 */
+    padding: 8px; /* パディングを調整 */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    margin-top: 15px; /* 余白を調整 */
 }
 
 .card {
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 10px;
+    padding: 4px; /* パディングを調整 */
     background-color: #f9f9f9;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     text-align: center;
-    width: 200px;
-    flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-between;
+    position: relative;
+    width: calc(20% - 8px); /* 5枚横並びの計算 */
+    min-width: 110px; /* 最小幅を調整 */
+    max-width: 160px; /* 最大幅を調整 */
+    box-sizing: border-box;
 }
 
-.card img {
-    max-width: 100%;
-    height: auto;
+.card-image-wrapper {
+    width: 100%;
+    padding-top: 140%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
     border-radius: 4px;
-    margin-bottom: 5px;
 }
 
 .card-name {
     font-weight: bold;
     color: #333;
-    margin-bottom: 5px;
-    font-size: 1.1em;
-}
-
-.card-product,
-.card-type,
-.card-number {
-    font-size: 0.85em;
-    color: #666;
-    margin-bottom: 3px;
-}
-
-.card-effect {
-    font-size: 0.8em;
-    color: #444;
-    text-align: left;
-    margin-top: 10px;
-    border-top: 1px dashed #eee;
-    padding-top: 10px;
-    white-space: pre-wrap;
+    margin: 1px 0; /* 余白を調整 */
+    font-size: 0.8em; /* フォントサイズを調整 */
     word-break: break-word;
+    line-height: 1.2;
 }
 
-.card {
-    /* 既存のスタイル */
-    position: relative; /* レアリティバッジを配置するために必要 */
+.card-number {
+    font-size: 0.75em; /* フォントサイズを調整 */
+    color: #666;
+    margin: 0 0 1px; /* 余白を調整 */
+    line-height: 1.2;
 }
 
-.card-rarity { /* レアリティ表示用のスタイル */
+.card-rarity {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    background-color: #000000cc; /* 半透明の黒背景 */
+    top: 2px; /* 位置を調整 */
+    right: 2px; /* 位置を調整 */
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
-    padding: 3px 8px;
-    border-radius: 5px;
-    font-size: 0.75em;
+    padding: 0px 3px; /* パディングを調整 */
+    border-radius: 3px; /* 角丸を調整 */
+    font-size: 0.6em; /* フォントサイズを調整 */
     font-weight: bold;
-    z-index: 10; /* 他の要素より手前に */
+    z-index: 10;
 }
 
-/* レアリティごとの色分け (例) */
-.rarity-N { background-color: #888; }
-.rarity-R { background-color: #007bff; }
-.rarity-P { background-color: #ffc107; color: #333; } 
-.rarity-L { background-color: #dc3545; }
-.rarity-R2 { background-color: #e67e22; } 
-.rarity-PE { background-color: #e67e22; } 
-.rarity-P2 { background-color: #e67e22; } 
-.rarity-PE2 { background-color: #e67e22; } 
-.rarity-SEC { background-color: #fff5ed; } 
-.rarity-LLE { background-color: #9b59b6; } 
-/* 必要に応じてレアリティのクラスを追加 */
+/* レアリティごとの色 */
+.rarity-N { border-color: #aaa; background-color: #eee; }
+.rarity-R { border-color: #88b; background-color: #ddeeff; }
+.rarity-P { border-color: #b88; background-color: #ffeeee; }
+.rarity-L { border-color: #8b8; background-color: #eeffee; }
+.rarity-R＋ { border-color: #ffcc00; background-color: #fffacd; }
+.rarity-PE { border-color: #ff99ff; background-color: #ffe0ff; }
+.rarity-P＋ { border-color: #9933ff; background-color: #e6ccff; }
+.rarity-PE＋ { border-color: #00cccc; background-color: #e0ffff; }
+.rarity-SEC { border-color: #ff6600; background-color: #ffe8cc; }
+.rarity-SECE { border-color: #cc00cc; background-color: #f2ccf2; }
+.rarity-LLE { border-color: #0099ff; background-color: #ccedff; }
 
+
+/* Share Area */
 .share-area {
-    margin-top: 30px;
-    margin-bottom: 50px; /* 下にスペース */
+    margin-top: 25px; /* 余白を調整 */
+    margin-bottom: 40px; /* 余白を調整 */
+    text-align: center;
 }
 
 #tweetResultButton {
-    background-color: #1DA1F2; /* Xのブランドカラー */
-    padding: 15px 30px;
-    font-size: 1.2em;
+    background-color: #1DA1F2;
+    padding: 12px 25px; /* パディングを調整 */
+    font-size: 1.1em; /* フォントサイズを調整 */
     color: white;
     border: none;
     border-radius: 8px;
@@ -180,234 +315,121 @@ button:hover {
     background-color: #0c85d0;
 }
 
-/* 以下は既存のスタイル */
-body {
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    background-color: #f0f0f0;
-}
 
-.history-area {
-    margin-top: 50px;
-    width: 90%;
-    max-width: 1000px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.history-area h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-#clearHistoryButton {
-    background-color: #dc3545; /* 赤色 */
-    padding: 10px 20px;
-    font-size: 1em;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 20px;
-}
-
-#clearHistoryButton:hover {
-    background-color: #c82333;
-}
-
-.history-item {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    padding: 15px;
-    background-color: #f9f9f9;
-    text-align: left;
-}
-
-.history-item h3 {
-    color: #555;
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.1em;
-}
-
-.history-item .history-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center; /* カードを中央揃え */
-    margin-top: 10px;
-}
-
-.history-item .history-card {
-    border: 1px solid #eee;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 0.8em;
-    width: 120px; /* 履歴表示用のカード幅を小さく */
-    text-align: center;
-    overflow: hidden; /* はみ出したテキストを隠す */
-    text-overflow: ellipsis; /* 省略記号 */
-    white-space: nowrap; /* 強制的に1行に */
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    position: relative;
-    padding-top: 25px; /* レアリティバッジのスペース */
-}
-
-.history-card .card-rarity { /* 履歴カード内のレアリティバッジ */
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    padding: 2px 5px;
-    font-size: 0.6em;
-    border-radius: 3px;
-    background-color: #000000cc; /* デフォルトの色 */
-    color: white;
-}
-
-/* 履歴カードのレアリティごとの色 */
-.history-card.rarity-N { background-color: #eee; }
-.history-card.rarity-R { background-color: #ffe0b2; } /* 薄いオレンジ */
-.history-card.rarity-P { background-color: #ccffcc; } /* 薄い緑 */
-.history-card.rarity-L { background-color: #b2e0ff; } /* 薄い青 */
-.history-card.rarity-R＋ { background-color: #ffd9b3; }
-.history-card.rarity-PE { background-color: #b3e0ff; }
-.history-card.rarity-P＋ { background-color: #99ff99; }
-.history-card.rarity-PE＋ { background-color: #80c8ff; }
-.history-card.rarity-SEC { background-color: #ffcccc; } /* 薄い赤 */
-.history-card.rarity-SECE { background-color: #ffb3b3; }
-.history-card.rarity-LLE { background-color: #e0b3ff; } /* 薄い紫 */
-
-
-.history-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 3px;
-    margin-bottom: 5px;
-}
-
-/* 省略（以前のCSSに続けて追加してください） */
-
-/* ▼▼▼ ここから追加 ▼▼▼ */
+/* Collection Area (Card Encyclopedia - for open.html) */
 .collection-area {
-    margin-top: 50px;
-    width: 90%;
+    margin-top: 40px; /* 余白を調整 */
+    width: 100%;
     max-width: 1000px;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 15px; /* パディングを調整 */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    box-sizing: border-box;
 }
 
 .collection-area h2 {
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* 余白を調整 */
 }
 
 #completionRates {
-    margin-bottom: 20px;
-    padding: 15px;
+    margin-bottom: 15px; /* 余白を調整 */
+    padding: 10px; /* パディングを調整 */
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f0f8ff;
 }
 
 #completionRates p {
-    font-size: 1.1em;
+    font-size: 1em; /* フォントサイズを調整 */
     font-weight: bold;
-    margin: 5px 0;
-}
-
-#productCompletionRates {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-    font-size: 0.9em;
+    margin: 3px 0; /* 余白を調整 */
 }
 
 #cardCollectionDisplayArea {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 8px; /* ギャップを調整 */
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 15px; /* 余白を調整 */
     border-top: 1px dashed #ccc;
-    padding-top: 20px;
+    padding-top: 15px; /* パディングを調整 */
+    padding-bottom: 15px; /* パディングを調整 */
 }
 
 .collection-card {
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 10px;
-    width: 150px; /* カード図鑑内のカードサイズ */
+    padding: 4px; /* パディングを調整 */
     text-align: center;
     background-color: #fefefe;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
     position: relative;
     overflow: hidden;
-    padding-top: 30px; /* レアリティバッジと所持枚数のスペース */
-    min-height: 200px; /* カード図鑑のカードの最小高さ */
+    padding-top: 20px; /* パディングを調整 */
+    min-height: 160px; /* 最小高さを調整 */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    width: calc(20% - 8px); /* 5枚横並びの計算 */
+    min-width: 70px; /* 最小幅を調整 */
+    max-width: 120px; /* 最大幅を調整 */
+    box-sizing: border-box;
 }
 
-.collection-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 5px;
+.collection-card .card-image-wrapper {
+    width: 100%;
+    padding-top: 140%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+    border-radius: 4px;
 }
 
 .collection-card .card-name {
-    font-size: 0.9em;
+    font-size: 0.7em; /* フォントサイズを調整 */
     font-weight: bold;
     color: #333;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 100%; /* 親要素の幅に合わせて ellipsis を機能させる */
+    width: 100%;
+    margin: 1px 0; /* 余白を調整 */
+    line-height: 1.1; /* 行の高さを調整 */
 }
 
 .collection-card .card-number {
-    font-size: 0.8em;
+    font-size: 0.65em; /* フォントサイズを調整 */
     color: #666;
-    margin-bottom: 5px;
+    margin: 0 0 1px; /* 余白を調整 */
+    line-height: 1.1; /* 行の高さを調整 */
 }
 
 .collection-card .card-rarity {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    padding: 3px 7px;
-    font-size: 0.7em;
-    border-radius: 4px;
+    top: 2px;
+    left: 2px;
+    padding: 0px 3px;
+    font-size: 0.55em; /* フォントサイズを調整 */
+    border-radius: 3px;
     background-color: #000000cc;
     color: white;
     font-weight: bold;
-    z-index: 10; /* 他の要素の上に表示 */
+    z-index: 10;
 }
 
 .collection-card .owned-count {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    padding: 3px 7px;
-    font-size: 0.7em;
-    border-radius: 4px;
-    background-color: #28a745; /* 緑色 */
+    top: 2px;
+    right: 2px;
+    padding: 0px 3px;
+    font-size: 0.55em; /* フォントサイズを調整 */
+    border-radius: 3px;
+    background-color: #28a745;
     color: white;
     font-weight: bold;
     z-index: 10;
@@ -415,35 +437,269 @@ body {
 
 /* 所持していないカードのスタイル */
 .collection-card.not-owned {
-    opacity: 0.5; /* 薄く表示 */
-    filter: grayscale(100%); /* グレースケール */
+    opacity: 0.4; /* 透明度を調整 */
+    filter: grayscale(100%);
 }
 
 /* レアリティごとの色（所持カードリスト用） */
-.collection-card.rarity-N { border-color: #ddd; background-color: #fcfcfc; }
-.collection-card.rarity-R { border-color: #ffc107; background-color: #fff9e6; }
-.collection-card.rarity-P { border-color: #28a745; background-color: #e8f9ed; }
-.collection-card.rarity-L { border-color: #007bff; background-color: #e6f2ff; }
-.collection-card.rarity-R＋ { border-color: #fd7e14; background-color: #fff4ec; }
-.collection-card.rarity-PE { border-color: #6c757d; background-color: #f8f9fa; }
-.collection-card.rarity-P＋ { border-color: #20c997; background-color: #e6f9f5; }
-.collection-card.rarity-PE＋ { border-color: #6610f2; background-color: #f2ebfc; }
-.collection-card.rarity-SEC { border-color: #dc3545; background-color: #ffebeb; }
-.collection-card.rarity-SECE { border-color: #e83e8c; background-color: #ffeaf3; }
-.collection-card.rarity-LLE { border-color: #6f42c1; background-color: #f3e9fb; }
+.collection-card.rarity-N { border-color: #aaa; background-color: #eee; }
+.collection-card.rarity-R { border-color: #88b; background-color: #ddeeff; }
+.collection-card.rarity-P { border-color: #b88; background-color: #ffeeee; }
+.collection-card.rarity-L { border-color: #8b8; background-color: #eeffee; }
+.collection-card.rarity-R＋ { border-color: #ffcc00; background-color: #fffacd; }
+.collection-card.rarity-PE { border-color: #ff99ff; background-color: #ffe0ff; }
+.collection-card.rarity-P＋ { border-color: #9933ff; background-color: #e6ccff; }
+.collection-card.rarity-PE＋ { border-color: #00cccc; background-color: #e0ffff; }
+.collection-card.rarity-SEC { border-color: #ff6600; background-color: #ffe8cc; }
+.collection-card.rarity-SECE { border-color: #cc00cc; background-color: #f2ccf2; }
+.collection-card.rarity-LLE { border-color: #0099ff; background-color: #ccedff; }
 
 
-/* 新しいカード画像表示用のスタイル */
-.card-image-wrapper {
-    width: 150px; /* カード画像の幅を調整 */
-    height: 210px; /* カード画像の高さを調整 (縦横比に合わせて調整してください) */
-    background-size: contain; /* 画像を枠に収める */
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 0 auto 5px; /* 中央揃えと下マージン */
-    /* 必要に応じてボーダーやシャドウを追加 */
+/* Back to Select Page Button */
+.back-button {
+    margin-top: 25px; /* 余白を調整 */
+    margin-bottom: 25px; /* 余白を調整 */
+    padding: 10px 20px; /* パディングを調整 */
+    font-size: 1em; /* フォントサイズを調整 */
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-.collection-card .card-image-wrapper {
-     width: 100px; /* コレクションのカード画像を少し小さく */
-     height: 140px; /* コレクションのカード画像を少し小さく */
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive Adjustments (Override existing ones with more refined settings) */
+
+/* For smaller tablets and large phones (e.g., max-width 768px) */
+@media (max-width: 768px) {
+    body {
+        margin-top: 15px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .container {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+    }
+    h2 {
+        font-size: 1.3em;
+        margin-top: 25px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    .controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .controls label {
+        width: 100%; /* ラベルも全幅 */
+        text-align: center;
+        margin-bottom: 0; /* 下余白をなくす */
+    }
+    .controls input[type="number"] {
+        width: 100%; /* 全幅に */
+        max-width: 120px; /* ある程度の最大幅 */
+    }
+    #openPackButton {
+        width: 100%; /* 全幅に */
+        max-width: 250px; /* ある程度の最大幅 */
+    }
+
+    .pack-thumbnail {
+        width: calc(33.33% - 15px); /* 3枚横並び */
+        min-width: 100px; /* 最小幅 */
+        padding: 8px;
+    }
+    .pack-thumbnail img {
+        margin-bottom: 5px;
+    }
+    .pack-thumbnail p {
+        font-size: 0.9em;
+    }
+
+    /* Card display in open.html */
+    .pack-container {
+        padding: 10px;
+        width: calc(100% - 20px);
+        max-width: 700px;
+    }
+    .pack-title {
+        font-size: 1.1em;
+        padding-bottom: 5px;
+    }
+    .pack-cards {
+        gap: 6px;
+        padding: 6px;
+    }
+    .card {
+        width: calc(33.33% - 6px); /* 3枚横並び */
+        min-width: 90px;
+        max-width: 130px;
+        padding: 3px;
+    }
+    .card-name {
+        font-size: 0.7em;
+    }
+    .card-number {
+        font-size: 0.6em;
+    }
+    .card-rarity {
+        font-size: 0.5em;
+    }
+
+    /* Collection area */
+    .collection-card {
+        width: calc(33.33% - 8px); /* 3枚横並び */
+        min-width: 60px;
+        max-width: 100px;
+        padding: 3px;
+        padding-top: 18px;
+        min-height: 140px;
+    }
+    .collection-card .card-name {
+        font-size: 0.65em;
+    }
+    .collection-card .card-number {
+        font-size: 0.55em;
+    }
+    .collection-card .card-rarity,
+    .collection-card .owned-count {
+        font-size: 0.5em;
+    }
+    #completionRates {
+        padding: 8px;
+    }
+    #completionRates p {
+        font-size: 0.9em;
+    }
+    #tweetResultButton, .back-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+/* For mobile phones (e.g., max-width 480px) */
+@media (max-width: 480px) {
+    body {
+        margin-top: 10px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .container {
+        padding: 8px;
+        border-radius: 5px;
+        box-shadow: none; /* スマホではシャドウを控えめに */
+    }
+    h1 {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+    h2 {
+        font-size: 1.1em;
+        margin-top: 20px;
+    }
+    button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    .controls {
+        gap: 6px;
+    }
+    .controls input[type="number"],
+    #openPackButton {
+        max-width: none; /* 全幅を使用 */
+    }
+
+    .pack-thumbnail {
+        width: calc(50% - 10px); /* 2枚横並び */
+        min-width: unset; /* 最小幅をリセット */
+        padding: 5px;
+    }
+    .pack-thumbnail p {
+        font-size: 0.8em;
+    }
+
+    /* Card display in open.html */
+    .pack-container {
+        padding: 8px;
+        width: calc(100% - 16px);
+    }
+    .pack-title {
+        font-size: 1em;
+        padding-bottom: 3px;
+    }
+    .pack-cards {
+        gap: 5px;
+        padding: 5px;
+    }
+    .card {
+        width: calc(50% - 5px); /* 2枚横並び */
+        min-width: unset;
+        padding: 2px;
+    }
+    .card-name {
+        font-size: 0.6em;
+    }
+    .card-number {
+        font-size: 0.55em;
+    }
+    .card-rarity {
+        font-size: 0.45em;
+        top: 1px;
+        right: 1px;
+    }
+
+    /* Collection area */
+    .collection-card {
+        width: calc(50% - 8px); /* 2枚横並び */
+        min-width: unset;
+        padding: 2px;
+        padding-top: 15px;
+        min-height: 120px;
+    }
+    .collection-card .card-name {
+        font-size: 0.6em;
+    }
+    .collection-card .card-number {
+        font-size: 0.5em;
+    }
+    .collection-card .card-rarity,
+    .collection-card .owned-count {
+        font-size: 0.45em;
+        top: 1px;
+        left: 1px;
+        right: 1px;
+    }
+    #completionRates {
+        padding: 5px;
+    }
+    #completionRates p {
+        font-size: 0.8em;
+    }
+    #tweetResultButton, .back-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .history-area {
+        padding: 10px;
+    }
+    #clearHistoryButton {
+        padding: 6px 12px;
+        font-size: 0.8em;
+        margin-top: 10px;
+    }
+    #totalPacksOpened, #totalAmountSpent {
+        font-size: 0.9em;
+    }
 }

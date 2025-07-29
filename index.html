@@ -1,78 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ラブカ開封シミュレーター</title>
+    <title>パック選択 - ラブライブ！カード開封シミュレーター</title>
     <link rel="stylesheet" href="style.css">
-    <script src="cards_data.js"></script>
-    <script src="script.js" defer></script>
-    <style>
-        /* 新しいカード画像表示用のスタイル */
-        .card-image-wrapper {
-            width: 150px; /* カード画像の幅を調整 */
-            height: 210px; /* カード画像の高さを調整 (縦横比に合わせて調整してください) */
-            background-size: contain; /* 画像を枠に収める */
-            background-repeat: no-repeat;
-            background-position: center;
-            margin: 0 auto 5px; /* 中央揃えと下マージン */
-            /* 必要に応じてボーダーやシャドウを追加 */
-        }
-        .collection-card .card-image-wrapper {
-             width: 100px; /* コレクションのカード画像を少し小さく */
-             height: 140px; /* コレクションのカード画像を少し小さく */
-        }
-    </style>
-    <script>
-        // 右クリック禁止とドラッグ＆ドロップ禁止のスクリプト
-        document.addEventListener('contextmenu', event => event.preventDefault()); // 右クリック禁止
-        document.addEventListener('dragstart', event => {
-            if (event.target.tagName === 'IMG') { // IMGタグのドラッグのみ禁止
-                event.preventDefault();
-            }
-        });
-    </script>
 </head>
 <body>
-    <h1>カードパック開封シミュレーター</h1>
+    <div class="container">
+        <h1>ラブライブ！カード開封シミュレーター</h1>
+        <h2>パックを選択してください</h2>
 
-    <div class="controls">
-        <label for="productSelect">収録商品:</label>
-        <select id="productSelect">
-            </select>
-
-        <label for="packCount">開封するパック数:</label>
-        <input type="number" id="packCount" value="1" min="1" max="100">
-        <button id="openPackButton">パックを開封する</button>
-    </div>
-    
-    <div id="cardDisplayArea">
-        </div>
-
-    <div class="share-area">
-        <button id="tweetResultButton" style="display: none;">Xに結果を投稿する</button>
-    </div>
-
-    <div class="history-area">
-        <h2>開封履歴</h2>
-        <p id="totalPacksOpened">合計開封パック数: 0パック</p>
-        <p id="totalAmountSpent">合計使用金額: 0円</p>
-        <button id="clearHistoryButton">履歴をクリア</button>
-        <div id="historyDisplayArea">
+        <div id="packSelectionArea">
             </div>
     </div>
 
-    <div class="collection-area">
-        <h2>カード図鑑 / 所持カードリスト</h2>
-        <div id="completionRates">
-            <p>全体コンプリート率: <span id="overallCompletion">0%</span></p>
-            <div id="productCompletionRates">
-                </div>
-        </div>
-        <div id="cardCollectionDisplayArea">
-            </div>
-    </div>
     <script src="cardsData.js"></script>
-    <script src="script.js"></script>
+    <script src="indexScript.js"></script>
 </body>
 </html>
